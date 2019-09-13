@@ -33,5 +33,18 @@ pipeline {
         echo "TODO - build and push image" 
       }
     }
+    stage('Deploy') {
+      when {
+        beforeAgent true
+        beforeInput true
+        branch 'master'
+      }
+      input {
+        message "Should we continue?"
+      }
+      steps {
+        echo "Continuing with deployment"
+      }
+    }
   }
 }
